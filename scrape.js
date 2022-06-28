@@ -30,7 +30,7 @@ async function scrape() {
     const priceNum = parseInt(price);
     product.price = priceNum;
 
-    if (priceNum < 9000) {
+    if (priceNum < 90000) {
       client.messages
         .create({
           body: ` The Price of ${product.name} is reduced to ${priceNum} click on ${product.link}`,
