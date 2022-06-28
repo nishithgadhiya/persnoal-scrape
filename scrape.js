@@ -15,32 +15,35 @@ const url =
 const product = { name: "", price: "", link: "" };
 
 async function scrape() {
-  const { data } = await axios.get(url);
-  const $ = cheerio.load(data);
-  const item = $("div#dp-container");
+  try {
+    const { data } = await axios.get(url);
+    const $ = cheerio.load(data);
+    const item = $("div#dp-container");
 
-  product.name = $(item).find("h1 span#productTitle").text();
-  product.link = url;
-  const price = $(item)
-    .find("span .a-price-whole")
-    .first()
-    .text()
-    .replace(/[,.]/g, "");
-  const priceNum = parseInt(price);
-  product.price = priceNum;
-  
+    product.name = $(item).find("h1 span#productTitle").text();
+    product.link = url;
+    const price = $(item)
+      .find("span .a-price-whole")
+      .first()
+      .text()
+      .replace(/[,.]/g, "");
+    const priceNum = parseInt(price);
+    product.price = priceNum;
 
-  if (priceNum < 90000) {
-    client.messages
-      .create({
-        body: ` The Price of ${product.name} is reduced to ${priceNum} click on ${product.link}`,
-        from: "+19895147354",
-        to: "+919099022373",
-      })
-      .then((message) => {
-        console.log(message);
-        clearInterval(handle);
-      });
+    if (priceNum < 9000) {
+      client.messages
+        .create({
+          body: ` The Price of ${product.name} is reduced to ${priceNum} click on ${product.link}`,
+          from: "+19895147354",
+          to: "+919099022373",
+        })
+        .then((message) => {
+          console.log(message);
+          clearInterval(handle);
+        });
+    }
+  } catch (err) {
+    console.log(err.toJSON());
   }
 }
 
