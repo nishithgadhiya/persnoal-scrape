@@ -39,7 +39,7 @@ async function scrape() {
         })
         .then((message) => {
           console.log(message);
-          clearInterval(handle);
+          //clearInterval(handle);
         });
     }
   } catch (err) {
