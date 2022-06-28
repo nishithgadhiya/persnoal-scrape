@@ -7,7 +7,7 @@ const twilioAuth = process.env.TWILIO_AUTH;
 
 const client = require("twilio")(twilioSid, twilioAuth);
 
-const handle = setInterval(scrape, 20000);
+const handle = setInterval(scrape, 30000);
 
 const url =
   "https://www.amazon.in/Oneplus-Bluetooth-Truly-Wireless-Earbuds/dp/B07XW7X1X6/ref=sr_1_3?crid=GDOGM2CXLM3Z&keywords=oneplus%2Bbuds%2Bpro&qid=1656403607&sprefix=oneplus%2Bbuds%2Bpr%2Caps%2C602&sr=8-3&th=1";
