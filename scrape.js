@@ -28,6 +28,7 @@ async function scrape() {
     .replace(/[,.]/g, "");
   const priceNum = parseInt(price);
   product.price = priceNum;
+  
 
   if (priceNum < 90000) {
     client.messages
